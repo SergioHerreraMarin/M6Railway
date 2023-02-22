@@ -64,7 +64,7 @@ async function getPostDades (req, res) {
 
       case "addUser":
         try{
-          queryResult = await db.query("insert into usuaris (nomm, cognom, email, telefon, direccio, ciutat) values('"+ receivedPOST.name +"', '"+ receivedPOST.lastName +"', '"+ receivedPOST.email +"', '"+ receivedPOST.phoneNumber +"', '"+ receivedPOST.address +"','" + receivedPOST.city + "');")
+          queryResult = await db.query("insert into usuaris (nom, cognom, email, telefon, direccio, ciutat) values('"+ receivedPOST.name +"', '"+ receivedPOST.lastName +"', '"+ receivedPOST.email +"', '"+ receivedPOST.phoneNumber +"', '"+ receivedPOST.address +"','" + receivedPOST.city + "');")
           result = { status: "OK", result: "query result"} 
         }catch(error){
           result = { status: "KO", result: "error :/"} 
