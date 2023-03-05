@@ -68,11 +68,13 @@ async function getPostDades (req, res) {
           if(receivedPOST.phoneNumber.length != 9){
             correctData = false;
             result = { status: "KO", result: "Número de teléfono incorrecto"}
+            break;
           }
 
           if(!receivedPOST.email.includes("@")){
             correctData = false;
             result = { status: "KO", result: "Email incorrecto"}
+            break;
           }
 
           if(correctData){
@@ -106,8 +108,24 @@ async function getPostDades (req, res) {
 
       case "modifyUserData":
         try{
-          queryResult = await db.query("update usuaris set nom = '" + receivedPOST.newName + "', cognom = '"+ receivedPOST.newLastName +"', email = '"+ receivedPOST.newEmail +"', telefon = '"+ receivedPOST.newPhoneNumber +"',direccio = '"+ receivedPOST.newAddress +"', ciutat = '"+ receivedPOST.newCity +"' where id = "+ receivedPOST.id +";");
-          result = { status: "OK", result: queryResult}
+          let correctData = true;
+          if(receivedPOST.newPhoneNumber.length != 9){
+            correctData = false;
+            result = { status: "KO", result: "Número de teléfono incorrecto"}
+            break;
+          }
+
+          if(!receivedPOST.newEmail.includes("@")){
+            correctData = false;
+            result = { status: "KO", result: "Email incorrecto"}
+            break;
+          }
+
+          if(correctData){
+            queryResult = await db.query("update usuaris set nom = '" + receivedPOST.newName + "', cognom = '"+ receivedPOST.newLastName +"', email = '"+ receivedPOST.newEmail +"', telefon = '"+ receivedPOST.newPhoneNumber +"',direccio = '"+ receivedPOST.newAddress +"', ciutat = '"+ receivedPOST.newCity +"' where id = "+ receivedPOST.id +";");
+            result = { status: "OK", result: queryResult}
+          }
+          
         }catch(error){
           result = { status: "KO", result: "error :/"}
         }
