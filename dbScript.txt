@@ -1,0 +1,13 @@
+drop database if exists RailwayDB;
+create database if not exists RailwayDB;
+use RailwayDB;
+
+create table if not exists usuaris(
+ID int primary key not null auto_increment,
+nom varchar(45),
+cognom varchar(45),
+email varchar(45),
+telefon varchar(45),
+direccio varchar(45),
+ciutat varchar(45)
+);
