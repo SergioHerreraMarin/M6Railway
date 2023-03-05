@@ -68,13 +68,11 @@ async function getPostDades (req, res) {
           if(receivedPOST.phoneNumber.length != 9){
             correctData = false;
             result = { status: "KO", result: "Número de teléfono incorrecto"}
-            break;
           }
 
           if(!receivedPOST.email.includes("@")){
             correctData = false;
             result = { status: "KO", result: "Email incorrecto"}
-            break;
           }
 
           if(correctData){
@@ -112,13 +110,11 @@ async function getPostDades (req, res) {
           if(receivedPOST.newPhoneNumber.length != 9){
             correctData = false;
             result = { status: "KO", result: "Número de teléfono incorrecto"}
-            break;
           }
 
           if(!receivedPOST.newEmail.includes("@")){
             correctData = false;
             result = { status: "KO", result: "Email incorrecto"}
-            break;
           }
 
           if(correctData){
