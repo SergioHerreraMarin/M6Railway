@@ -100,9 +100,9 @@ async function getPostDades (req, res) {
       break;
 
     }
-
+    await wait(1500)
   }
-
+  
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(result))
 
